@@ -14,12 +14,6 @@
 'Alioss' => Siaoynli\LaravelAliOSS\Facades\Alioss::class
 ``` 
 
-Copy the package config to your local config with the publish command:
-
-```
-php artisan vendor:publish --provider="Siaoynli\LaravelAliOSS\AliossServiceProvider"
-```
-
 ## 使用
 有两种使用方法，第一种是调用 Laravel 的 Filesystem 组件进行操作阿里云OSS上的对象，第二种是直接使用本扩展所提供的方法。
 

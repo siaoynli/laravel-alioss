@@ -22,10 +22,6 @@ class AliossServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        $this->publishes([
-            __DIR__ . '/../config/alioss.php' => config_path('alioss.php'),
-        ]);
-
         //自定义文件系统 extend 方法的第一个参数是驱动程序的名称，第二个参数是接收 $app 及 $config 变量的闭包。该解析闭包必须返回 League\Flysystem\Filesystem 的实例。$config 变量包含了特定磁盘在 config/filesystems.php 中定义的值。
         Storage::extend('alioss', function ($app, $config)  {
             return new Filesystem(new AliossAdapter($this->ossClient, $config['bucket']));
@@ -39,6 +35,10 @@ class AliossServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/alioss.php','alioss'
+        );
+
         $config=$this->app['config'];
 
         $arr=[
