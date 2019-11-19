@@ -1,0 +1,19 @@
+{
+    "name": "siaoynli/laravel-alioss",
+    "description": "aliyun oss for Laravel.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "siaoynli",
+            "email": "siaoynli@126.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Siaoynli\\LaravelAliOSS\\": "src/"
+        }
+    },
+    "require": {
+        "aliyuncs/oss-sdk-php": "~2.3.0"
+    }
+}
