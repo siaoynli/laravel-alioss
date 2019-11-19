@@ -13,16 +13,11 @@
 ```php
 'Alioss' => Siaoynli\LaravelAliOSS\Facades\Alioss::class
 ``` 
-先在 config/filesystems.php 中的 disks 中添加以下配置：
-```php
-'alioss' => [
-    'driver' => 'alioss',
-'key' => env('ACCESS_KEY_ID'),
-    'secret' => env('ACCESS_KEY_SECRET'),
-     'region' => env('OSS_ENDPOINT'),
-     'bucket' => env('OSS_BUCKET'),
-      'url' => env('OSS_BUCKET_HOST'),
-],
+
+Copy the package config to your local config with the publish command:
+
+```
+php artisan vendor:publish --provider="Siaoynli\LaravelAliOSS\AliossServiceProvider"
 ```
 
 ## 使用
