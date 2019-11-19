@@ -2,7 +2,7 @@
 基于aliyuncs/oss-sdk-php项目上对Laravel框架的扩展
 
 ## 使用
-    composer require siaoynli/laravel5-alioss
+    composer require siaoynli/laravel-alioss
 
 ## 配置
 在 config/app.php 的 providers 中添加
