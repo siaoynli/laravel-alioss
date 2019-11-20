@@ -19,9 +19,8 @@ OSS_BUCKET_HOST=
 ```
  composer require siaoynli/laravel-alioss
 ```
-   
-
-
+ 
+ 安装包自动加载，可以直接使用
 
 ## 使用
 有两种使用方法，第一种是调用 Laravel 的 Filesystem 组件进行操作阿里云OSS上的对象，第二种是直接使用本扩展所提供的方法。
@@ -48,8 +47,11 @@ Storage::disk('alioss')->getTimestamp('/test/text');
 Storage::disk('alioss')->getVisibility('/test/text');
 ```
 ### 使用扩展方法
-配置了别名后，可以直接使用以下语法调用：
+可以直接使用以下语法调用：
 ```php
+
+use Alioss;
+
 Alioss::write('test/text', '这是一段测试文字！');
 Alioss::has('test/text');
 Alioss::getSize('test/text');
