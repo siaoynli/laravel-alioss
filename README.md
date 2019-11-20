@@ -21,16 +21,6 @@ OSS_BUCKET_HOST=
 ```
    
 
-## 配置
-在 config/app.php 的 providers 中添加
-```php
- Siaoynli\LaravelAliOSS\AliossServiceProvider::class,
-``` 
-在 aliases 配置别名
-```php
-'Alioss' => Siaoynli\LaravelAliOSS\Facades\Alioss::class
-``` 
-
 
 
 ## 使用

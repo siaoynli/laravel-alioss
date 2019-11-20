@@ -22,7 +22,7 @@
                 "Siaoynli\\LaravelAliOSS\\AliossServiceProvider"
             ],
             "aliases": {
-                "AliOSS": "Siaoynli\\LaravelAliOSS\\Facades\\Alioss"
+                "Alioss": "Siaoynli\\LaravelAliOSS\\Facades\\Alioss"
             }
         }
     }
