@@ -63,7 +63,7 @@ class AliossServiceProvider extends ServiceProvider
                 return new Alioss($this->ossClient, $bucket);
             });
         } catch (OssException $e) {
-            logger('Alioss service init error: ' . $e->getMessage());
+            throw new OssException($e->getMessage());
         }
     }
 }

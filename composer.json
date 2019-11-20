@@ -8,12 +8,22 @@
             "email": "siaoynli@126.com"
         }
     ],
+    "require": {
+        "aliyuncs/oss-sdk-php": "~2.3.0"
+    },
     "autoload": {
         "psr-4": {
             "Siaoynli\\LaravelAliOSS\\": "src/"
         }
     },
-    "require": {
-        "aliyuncs/oss-sdk-php": "~2.3.0"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Siaoynli\\LaravelAliOSS\\AliossServiceProvider"
+            ],
+            "aliases": {
+                "AliOSS": "Siaoynli\\LaravelAliOSS\\Facades\\Alioss"
+            }
+        }
     }
 }

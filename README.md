@@ -1,8 +1,25 @@
 # alioss
 基于aliyuncs/oss-sdk-php项目上对Laravel框架的扩展
 
+
+
 ## 使用
-    composer require siaoynli/laravel-alioss
+
+.env添加  
+```
+ACCESS_KEY_ID=key
+ACCESS_KEY_SECRET=xxx
+OSS_ENDPOINT=oss-cn-hangzhou.aliyuncs.com
+OSS_BUCKET=cn-hangzhou
+OSS_BUCKET_HOST=
+```
+重要,确保key和secret正确否则安装不上
+
+安装
+```
+ composer require siaoynli/laravel-alioss
+```
+   
 
 ## 配置
 在 config/app.php 的 providers 中添加
@@ -14,14 +31,7 @@
 'Alioss' => Siaoynli\LaravelAliOSS\Facades\Alioss::class
 ``` 
 
-.env添加
-```
-ACCESS_KEY_ID=
-ACCESS_KEY_SECRET=
-OSS_ENDPOINT=oss-cn-hangzhou.aliyuncs.com
-OSS_BUCKET=
-OSS_BUCKET_HOST=
-```
+
 
 ## 使用
 有两种使用方法，第一种是调用 Laravel 的 Filesystem 组件进行操作阿里云OSS上的对象，第二种是直接使用本扩展所提供的方法。
