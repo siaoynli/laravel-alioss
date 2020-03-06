@@ -3,6 +3,7 @@
 namespace Siaoynli\LaravelAliOSS;
 
 
+use Illuminate\Config\Repository;
 use Illuminate\Filesystem\FilesystemAdapter;
 use OSS\Core\OssException;
 use OSS\OssClient;
@@ -12,22 +13,34 @@ class Alioss
     /**
      * @var string
      */
-    private $bucket;
+    private $bucket=null;
 
     /**
      * @var OssClient
      */
-    private $ossClient;
+    private $ossClient=null;
 
     /**
      * Alioss constructor.
      * @param OssClient $ossClient
      * @param $bucket
      */
-    public function __construct(OssClient $ossClient, $bucket)
+    public function __construct(Repository $config)
     {
-        $this->ossClient = $ossClient;
-        $this->bucket = $bucket;
+        $ossConfig = $config->get("filesystems.disks.alioss");
+
+        $this->bucket =$this->bucket?:$ossConfig['bucket'];
+        if(!$this->ossClient) {
+            try {
+                // 创建OSS客户端
+                $this->ossClient = new OssClient($ossConfig['key'], $ossConfig['secret'], $ossConfig['region']);
+                if (!$this->ossClient) {
+                    throw new OssException("Oss Client is Null,Please Check OSS Config");
+                }
+            } catch (OssException $e) {
+                throw new OssException($e->getMessage());
+            }
+        }
     }
 
     /**
