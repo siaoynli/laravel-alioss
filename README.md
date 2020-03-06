@@ -4,6 +4,16 @@
 
 
 ## 使用
+   
+
+.env添加  
+```
+ACCESS_KEY_ID=key
+ACCESS_KEY_SECRET=xxx
+OSS_ENDPOINT=oss-cn-hangzhou.aliyuncs.com
+OSS_BUCKET=cn-hangzhou
+OSS_BUCKET_HOST=
+```
 filesystem.php添加oss驱动
 ```
 'alioss' => [
@@ -14,17 +24,7 @@ filesystem.php添加oss驱动
             'bucket' => env('OSS_BUCKET'),
             'url' => env('OSS_BUCKET_HOST'),
 ],
-```      
-
-.env添加  
-```
-ACCESS_KEY_ID=key
-ACCESS_KEY_SECRET=xxx
-OSS_ENDPOINT=oss-cn-hangzhou.aliyuncs.com
-OSS_BUCKET=cn-hangzhou
-OSS_BUCKET_HOST=
-```
-重要,确保key和secret正确否则安装不上
+```   
 
 安装
 ```
