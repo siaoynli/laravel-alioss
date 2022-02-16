@@ -13,12 +13,12 @@ class Alioss
     /**
      * @var string
      */
-    private $bucket=null;
+    private $bucket = null;
 
     /**
      * @var OssClient
      */
-    private $ossClient=null;
+    private $ossClient = null;
 
     /**
      * Alioss constructor.
@@ -29,8 +29,8 @@ class Alioss
     {
         $ossConfig = $config->get("filesystems.disks.alioss");
 
-        $this->bucket =$this->bucket?:$ossConfig['bucket'];
-        if(!$this->ossClient) {
+        $this->bucket = $this->bucket ?: $ossConfig['bucket'];
+        if (!$this->ossClient) {
             try {
                 // 创建OSS客户端
                 $this->ossClient = new OssClient($ossConfig['key'], $ossConfig['secret'], $ossConfig['region']);
@@ -279,5 +279,22 @@ class Alioss
             logger('Get object visibility fail. Cause: ' . $e->getMessage());
         }
         return false;
+    }
+
+    /**
+     * 创建文件临时访问链接
+     * @param string $path
+     * @param int $timeout
+     * @return string
+     */
+    public function getSignUrl($path, $timeout = 600)
+    {
+        try {
+            $signedUrl = $this->ossClient->signUrl($this->bucket, $path, $timeout);
+            return $signedUrl;
+        } catch (OssException $e) {
+            logger('Get object url fail. Cause: ' . $e->getMessage());
+            return "";
+        }
     }
 }
