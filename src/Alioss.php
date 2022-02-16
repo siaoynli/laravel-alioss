@@ -280,4 +280,21 @@ class Alioss
         }
         return false;
     }
+    
+     /**
+     * 创建文件临时访问链接
+     * @param string $path
+     * @param int $timeout
+     * @return string
+     */
+    public function getSignUrl($path, $timeout = 600)
+    {
+        try {
+            $signedUrl = $this->ossClient->signUrl($this->bucket, $path, $timeout);
+            return $signedUrl;
+        } catch (OssException $e) {
+            logger('Get object url fail. Cause: ' . $e->getMessage());
+            return "";
+        }
+    }
 }
