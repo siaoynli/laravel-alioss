@@ -290,6 +290,7 @@ class Alioss
     public function getSignUrl($path, $timeout = 600)
     {
         try {
+              $this->ossClient->setUseSSL(true);
             $signedUrl = $this->ossClient->signUrl($this->bucket, $path, $timeout);
             return $signedUrl;
         } catch (OssException $e) {
