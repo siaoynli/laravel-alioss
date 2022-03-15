@@ -297,4 +297,29 @@ class Alioss
             return "";
         }
     }
+    
+    public function getObjectMeta($object){
+        try {
+            // 获取文件的全部元信息。
+           return  $this->ossClient->getObjectMeta($this->bucket, $object);
+        } catch (OssException $e) {
+
+            logger('Get object meta fail. Cause: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    
+
+    public function copyObject($object,$option=[]){
+        $copyOptions = array(
+            OssClient::OSS_HEADERS => $option,
+        );
+        try{
+            $this->ossClient->copyObject($this->bucket, $object, $this->bucket, $object, $copyOptions);
+        } catch(OssException $e) {
+            logger('copy object fail. Cause: ' . $e->getMessage());
+            return;
+        }
+    }
 }
